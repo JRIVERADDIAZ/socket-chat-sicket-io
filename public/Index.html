@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" />
+	<title>minichat</title>
+</head>
+
+<body class="container">
+	<h1 class="mt-5"> minichat </h1>
+
+	<hr />
+	<form id="myForm">
+		<div class="row">
+			<div class="col-8">
+				<input type="text" id="txtMessage" placeholder="Message" class="form-control" />
+			</div>
+
+			<div class="col-4">
+				<button type="submit" class="btn btn-primary"> Send </button>
+			</div>
+		</div>
+	</form>
+
+
+	<div class="row">
+		<div class="col">
+			<ul id="my-messages" class="mt-2">
+
+			</ul>
+		</div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.1/socket.io.js"
+		integrity="sha512-9mpsATI0KClwt+xVZfbcf2lJ8IFBAwsubJ6mI3rtULwyM3fBmQFzj0It4tGqxLOGQwGfJdk/G+fANnxfq9/cew=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script>
+
+		const socket = io('http://localHost:8080')
+
+		const formulario = document.querySelector('#myForm')
+		const mensajes = document.querySelector('#my-messages')
+		const txtMessage = document.querySelector('#txtMessage')
+
+		formulario.addEventListener('submit', (env) => {
+			env.preventDefault()
+
+			const nuevoMensaje = txtMessage.value
+
+			socket.emit('message-to-server', { texto: nuevoMensaje })
+
+		})
+
+		socket.on('message-from-server', (data) => {
+			mensajes.innerHTML +=  `<li>${data.texto}</li> `
+
+		})
+
+
+
+		// socket.on('mensaje-bienvenida', (data) => {
+		//     console.log('servidor emitio algo ');
+		//     console.log(data);
+		// })
+
+		// socket.on('mensaje-cliente', (data) => {
+		// 	console.log(data);
+		// })
+	</script>
+</body>
+
+</html>
