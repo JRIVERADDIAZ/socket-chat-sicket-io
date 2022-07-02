@@ -13,9 +13,9 @@
   "dependencies": {
     "dotenv": "^16.x",
     "express": "^4.x",
+    "npm": "^6.14.13",
     "socket.io": "^4.x"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JRIVERADDIAZ/socket-chat-sicket-io.git"
