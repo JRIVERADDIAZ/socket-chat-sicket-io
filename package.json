@@ -15,7 +15,7 @@
     "stack": "heroku-22"
   },
   "engines": {
-    "node": "16.15.1",
-    "npm": "8.12.2"
+    "node": "16.x",
+    "npm": "8.x"
   }
 }
