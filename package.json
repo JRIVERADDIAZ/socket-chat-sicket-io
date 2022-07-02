@@ -11,9 +11,9 @@
   "author": "AJ Rivera",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^16.0.1",
-    "express": "^4.18.1",
-    "socket.io": "^4.5.1"
+    "dotenv": "^16.x",
+    "express": "^4.x",
+    "socket.io": "^4.x"
   },
   "devDependencies": {},
   "repository": {
